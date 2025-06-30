@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><title>Admin Panel - OVER STARS</title></head>
+<body>
+  <h1>Admin Panel - OVER STARS</h1>
+  <div id="users"></div>
+  <script>
+    fetch('/api/users')
+      .then(res => res.json())
+      .then(data => {
+        const div = document.getElementById('users');
+        div.innerHTML = '<h3>Registered Users</h3>' + data.map(u =>
+          `<p><strong>${u.username}</strong> — ${u.role}</p>`
+        ).join('');
+      });
+  </script>
+</body>
+</html>
